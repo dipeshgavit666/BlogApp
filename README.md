@@ -28,7 +28,7 @@ This uses npm workspaces from the root `package.json` and installs dependencies 
 npm run dev
 ```
 
-Runs all `dev` scripts in parallel (frontend Vite dev server, backend Express dev server) via Turborepo.
+Runs frontend and backend dev servers in parallel (Vite + Express) using npm workspaces.
 
 - **Build**
 

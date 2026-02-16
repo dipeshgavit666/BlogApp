@@ -9,11 +9,11 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev --parallel --filter=backend --filter=blog_frontend",
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "type-check": "turbo run type-check",
-    "test": "turbo run test --filter=backend",
+    "dev": "concurrently \"npm run dev -w blog_frontend\" \"npm run dev -w blog_backend\"",
+    "build": "npm run build -w blog_backend && npm run build -w blog_frontend",
+    "lint": "concurrently \"npm run lint -w blog_backend\" \"npm run lint -w blog_frontend\"",
+    "type-check": "concurrently \"npm run type-check -w blog_backend\" \"npm run type-check -w blog_frontend\"",
+    "test": "npm run test -w blog_backend",
     "format": "prettier --write .",
     "prepare": "husky install"
   },
@@ -35,7 +35,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.1",
-    "turbo": "^2.8.5",
+    "concurrently": "^9.1.2",
     "typescript": "^5.9.3"
   },
   "lint-staged": {
