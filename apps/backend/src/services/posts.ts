@@ -74,7 +74,7 @@ export async function updatePost(
   return await Post.findByIdAndUpdate(
     { _id: postId },
     { $set: { title, author, contents, tags } },
-    { new: true },
+    { returnDocument: "after" },
   );
 }
 
